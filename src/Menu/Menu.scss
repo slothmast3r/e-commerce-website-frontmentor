@@ -1,0 +1,14 @@
+.menu {
+  display: flex;
+  border-bottom: 1px var(--grayish-blue) solid;
+
+  .menu-left-side {
+    display: flex;
+    gap: 1em;
+  }
+  .menu-right-side {
+    width: 100%;
+    display: flex;
+    place-content: flex-end;
+  }
+}

@@ -1,7 +1,9 @@
-import Logo from "../Logo/Logo";
-import { useEffect, useState } from "react";
+import Logo from "../images/SVGs/Logo/Logo";
+import { useState } from "react";
 import Avatar from "../images/image-avatar.png";
-import Cart from "../cart/cart";
+import Cart from "../images/SVGs/Cart/Cart";
+import "./Menu.scss"
+
 
 const menuElements = [
   {
@@ -37,12 +39,16 @@ function DomMenuElement(props) {
 function Menu() {
   return (
     <div className="menu">
-      <Logo/>
-      {menuElements.map(function (element, i) {
-        return <DomMenuElement name={element.name} id={element.id} key={i} />;
-      })}
+      <div className="menu-left-side">
+        <Logo />
+        {menuElements.map(function (element, i) {
+          return <DomMenuElement name={element.name} id={element.id} key={i} />;
+        })}
+      </div>
+      <div className="menu-right-side">
         <Cart />
-      <img src={Avatar} alt="Avatar" />
+        <img src={Avatar} alt="Avatar" />
+      </div>
     </div>
   );
 }
