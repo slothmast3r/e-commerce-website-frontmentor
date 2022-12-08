@@ -42,7 +42,7 @@ function CollectionGallery() {
     <div>
       <img
         src={idThumbnail[currentImage].image}
-        alt="Current Image from thumbnail"
+        alt="Shoe foto"
       />
       <div className="gallery-row">
         {thumbnailsData.map(function (element, i) {

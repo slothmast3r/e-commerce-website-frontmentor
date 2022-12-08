@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 function PlusIcon({onClick}) {
   return (
     <button onClick={()=>onClick()}>
