@@ -1,6 +1,7 @@
 import "./CollectionDescAndPurchase.scss";
 import PriceTag from "./PriceTag";
 import ItemAmount from "./ItemAmount";
+import { useState } from "react";
 
 const companySubtitle = "Sneaker Company";
 const productTitle = "Fall limited edition sneakers";
@@ -17,11 +18,19 @@ function ProductDescription() {
   );
 }
 function CollectionDescAndPurchase() {
+  const [itemCount, setItemCount] = useState(0);
+  function handleAmount(num) {
+    setItemCount((current) => {
+        let result = current + num
+        return result < 0 ? 0 : result
+    });
+  }
+
   return (
     <section>
       <ProductDescription></ProductDescription>
       <PriceTag></PriceTag>
-        <ItemAmount ></ItemAmount>
+      <ItemAmount number={itemCount} handleClick={(num)=>handleAmount(num)}></ItemAmount>
     </section>
   );
 }

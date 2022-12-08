@@ -42,6 +42,7 @@ function CollectionGallery() {
               desc={element.desc}
               onClick={()=>thumbnailClicked(i)}
               index={i}
+              key={`prod${i}`}
             />
           );
         })}
