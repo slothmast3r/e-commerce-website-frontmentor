@@ -11,38 +11,50 @@ import "./CollectionGallery.scss";
 import { useState } from "react";
 
 const thumbnailsData = [
-  { thumbNail: TNShoe1, image: ImgShoe1, id: 1, desc: "Product TN1" },
-  { thumbNail: TNShoe2, image: ImgShoe2, id: 2, desc: "Product TN2" },
-  { thumbNail: TNShoe3, image: ImgShoe3, id: 3, desc: "Product TN3" },
-  { thumbNail: TNShoe4, image: ImgShoe4, id: 4, desc: "Product TN4" },
+  { thumbNail: TNShoe1, image: ImgShoe1, id: "image1", desc: "Product TN1" },
+  { thumbNail: TNShoe2, image: ImgShoe2, id: "image2", desc: "Product TN2" },
+  { thumbNail: TNShoe3, image: ImgShoe3, id: "image3", desc: "Product TN3" },
+  { thumbNail: TNShoe4, image: ImgShoe4, id: "image4", desc: "Product TN4" },
 ];
-function ThumbNail({ desc, thumbNail, index }) {
+
+const idThumbnail = {
+  image1: thumbnailsData[0],
+  image2: thumbnailsData[1],
+  image3: thumbnailsData[2],
+  image4: thumbnailsData[3],
+};
+function ThumbNail({ desc, thumbNail, index, onClick, id, currentImage }) {
   return (
-    <div>
+    <div className={id === currentImage ? "selected" : ""} onClick={onClick}>
       <img src={thumbNail} alt={desc} />
     </div>
   );
 }
 
 function CollectionGallery() {
-  const [currentImage, setCurrentImage] = useState(ImgShoe1);
+  const [currentImage, setCurrentImage] = useState("image1");
 
-  function thumbnailClicked(index){
-      setCurrentImage(thumbnailsData[index])
+  function thumbnailClicked(index) {
+    setCurrentImage(thumbnailsData[index].id);
   }
 
   return (
     <div>
-      <img src={currentImage} alt="Current Image from thumbnail" />
+      <img
+        src={idThumbnail[currentImage].image}
+        alt="Current Image from thumbnail"
+      />
       <div className="gallery-row">
         {thumbnailsData.map(function (element, i) {
           return (
             <ThumbNail
+              currentImage={currentImage}
               thumbNail={element.thumbNail}
               desc={element.desc}
-              onClick={()=>thumbnailClicked(i)}
+              onClick={() => thumbnailClicked(i)}
               index={i}
-              key={`prod${i}`}
+              id={element.id}
+              key={`elem${i}`}
             />
           );
         })}

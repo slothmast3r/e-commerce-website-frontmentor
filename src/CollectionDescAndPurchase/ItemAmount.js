@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 function PlusIcon({onClick}) {
   return (
-    <div onClick={()=>onClick()}>
+    <button onClick={()=>onClick()}>
       <svg
         width="12"
         height="12"
@@ -17,13 +17,13 @@ function PlusIcon({onClick}) {
         </defs>
         <use fill="#FF7E1B" fillRule="nonzero" xlinkHref="#b" />
       </svg>
-    </div>
+    </button>
   );
 }
 
 function MinusIcon({onClick}) {
   return (
-    <div onClick={()=>onClick()}>
+    <button onClick={()=>onClick()}>
       <svg
         width="12"
         height="4"
@@ -38,7 +38,7 @@ function MinusIcon({onClick}) {
         </defs>
         <use fill="#FF7E1B" fillRule="nonzero" xlinkHref="#a" />
       </svg>
-    </div>
+    </button>
   );
 }
 function ItemAmount({ number = 0, handleClick }) {
